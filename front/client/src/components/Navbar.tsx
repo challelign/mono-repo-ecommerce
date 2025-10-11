@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bell, Home, ShoppingCart, User } from "lucide-react";
+import { Bell, Home,   User } from "lucide-react";
 import SearchBar from "./SearchBar";
+import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const Navbar = () => {
   return (
@@ -25,6 +26,7 @@ const Navbar = () => {
         <Link href="/">
           <Home className="w-4 h-4 text-gray-600" />
         </Link>
+        <ShoppingCartIcon/>
         <Bell className="w-4 h-4 text-gray-600" />
 
         <Link href="/login" className="link-base link-hover-amber hover-glow">

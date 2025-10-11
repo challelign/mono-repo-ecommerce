@@ -1,6 +1,6 @@
 import React from 'react'
 import Categories from './Categories'
-import { products } from '@/sample/productList'
+import { products } from '@/sample/data'
 import ProductCard from './ProductCard'
 import Link from 'next/link'
 import Filter from './Filter'
