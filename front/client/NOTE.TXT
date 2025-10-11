@@ -1,0 +1,9 @@
+| Class          | Meaning                                                                                                              |
+| -------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `mx-auto`      | Centers the div **horizontally** (sets left and right margins to auto). Useful for centering the layout on the page. |
+| `p-4`          | Adds **padding on all sides** (1rem = 16px) for small devices.                                                       |
+| `sm:px-0`      | On **small screens and above** (`≥640px`), sets **horizontal padding (px)** to 0.                                    |
+| `sm:max-w-xl`  | On small screens and above, limits the **maximum width** of the container to `36rem` (≈576px).                       |
+| `md:max-w-2xl` | On **medium screens** (`≥768px`), increases the max width to `42rem` (≈672px).                                       |
+| `lg:max-w-3xl` | On **large screens** (`≥1024px`), max width becomes `48rem` (≈768px).                                                |
+| `xl:max-w-6xl` | On **extra large screens** (`≥1280px`), max width is `72rem` (≈1152px).                                              |

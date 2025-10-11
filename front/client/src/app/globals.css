@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+
+@layer utilities {
+  /* === 1. Fade + Slide Down Entry === */
+  @keyframes slideFadeDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideFadeDown {
+    animation: slideFadeDown 0.8s ease-out;
+  }
+
+  /* === 2. Gradient Shimmer Movement === */
+  @keyframes gradientShine {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradientShine {
+    background-size: 300% 100%;
+    animation: gradientShine 8s ease-in-out infinite;
+  }
+
+  /* === 3. Soft Glow Pulse === */
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(255, 200, 50, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(255, 200, 50, 0.7);
+    }
+  }
+
+  .animate-glowPulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+}
+
+
+@layer utilities {
+  /* === Reusable link style === */
+  .link-base {
+    @apply flex items-center gap-2 px-3 py-1.5 rounded-md text-gray-700 transition-colors duration-300 ease-in-out cursor-pointer;
+  }
+
+  /* === Hover variant === */
+  .link-hover-amber {
+    @apply hover:bg-amber-500 hover:text-white;
+  }
+
+  /* === Optional glow hover effect === */
+  .hover-glow {
+    transition: all 0.3s ease-in-out;
+  }
+  .hover-glow:hover {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  }
+}
