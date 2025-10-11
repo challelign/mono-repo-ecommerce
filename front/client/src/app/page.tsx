@@ -1,10 +1,6 @@
 import ProductList from "@/components/ProductList";
 import Image from "next/image";
 
-interface CategoryProps {
-  category: string;
-}
-
 
 // we need to passs category from the url params to the product list 
 const Homepage = async({searchParams}:{searchParams:Promise<{category:string}>}) => {
