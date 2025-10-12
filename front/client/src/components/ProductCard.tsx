@@ -8,46 +8,60 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const ProductCard = ({ product }: { product: ProductType }) => {
+  const [productTypeSelect, setProductTypesSelect] = useState({
+    size: product.sizes[0], // first item
+    color: product.colors[0],
+  });
 
-    const [productTypeSelect, setProductTypesSelect] = useState({
-        size:product.sizes[0], // first item
-        color:product.colors[0]
-    })
+  // Store cart
+  const { addToCart } = useCartStore();
 
-    // Store cart
-    const {addToCart}= useCartStore()
-
-    const handleAddToCart = ()=>{
-      addToCart({
-        ...product,
-        quantity:1,
-        selectedColor:productTypeSelect.color,
-        selectedSize:productTypeSelect.size
-      })
-      toast.success("Proudct added to cart.")
-      
-    }
-    // pass size and color as type
-    const handleProductType =({type, value}:{type:"size" | "color", value:string})=>{
-        setProductTypesSelect((prev) => ({
-            ...prev, [type]:value
-        }))
-    }
-
-
+  const handleAddToCart = () => {
+    addToCart({
+      ...product,
+      quantity: 1,
+      selectedColor: productTypeSelect.color,
+      selectedSize: productTypeSelect.size,
+    });
+    toast.success("Proudct added to cart.");
+  };
+  // pass size and color as type
+  const handleProductType = ({
+    type,
+    value,
+  }: {
+    type: "size" | "color";
+    value: string;
+  }) => {
+    setProductTypesSelect((prev) => ({
+      ...prev,
+      [type]: value,
+    }));
+  };
 
   return (
     <div className="shadow-lg rounded-lg overflow-hidden">
       {/* IMAGE */}
       <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-[2/3]">
+        {/* <div className="relative aspect-[2/3]">
           <Image
             // src={product?.images[product.colors[0]]}
-            src={product?.images[productTypeSelect.color]} // to see the effect if the user select different color 
+            src={product?.images[productTypeSelect.color]} // to see the effect if the user select different color
             alt={product.name}
             fill
-            className="object-cover hover:scale-105 transition-all duration-300"
+            className="object-cover hover:scale-105 transition-all duration-300 rounded-md"
           />
+        </div> */}
+
+        <div className="flex justify-center">
+          <div className="relative w-24 h-36 md:w-32 md:h-48 lg:w-40 lg:h-60">
+            <Image
+              src={product?.images[productTypeSelect.color]}
+              alt={product.name}
+              fill
+              className="object-cover hover:scale-105 transition-all duration-300 rounded-md"
+            />
+          </div>
         </div>
       </Link>
       {/* PRODUCT DETAIL */}
@@ -55,10 +69,8 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <h1 className="font-medium">{product.name}</h1>
         <p className="text-sm text-gray-500">{product.shortDescription}</p>
 
-
         {/* PRODUCT TYPES */}
         <div className="flex items-center gap-4 text-xs">
-
           {/* SIZES */}
           <div className="flex flex-col gap-1">
             <span className="text-gray-500">Size</span>
@@ -66,9 +78,9 @@ const ProductCard = ({ product }: { product: ProductType }) => {
               name="size"
               id="size"
               className="ring ring-gray-300 rounded-md px-2 py-1"
-                onChange={(e) =>
-                    handleProductType({ type: "size", value: e.target.value })
-                }
+              onChange={(e) =>
+                handleProductType({ type: "size", value: e.target.value })
+              }
             >
               {product.sizes.map((size) => (
                 <option key={size} value={size}>
@@ -77,7 +89,6 @@ const ProductCard = ({ product }: { product: ProductType }) => {
               ))}
             </select>
           </div>
-
 
           {/* COLORS */}
           <div className="flex flex-col gap-1">
@@ -88,14 +99,14 @@ const ProductCard = ({ product }: { product: ProductType }) => {
                   className={`cursor-pointer border-1 ${
                     productTypeSelect.color === color
                       ? "border-gray-400"
-                      : "border-gray-200" 
+                      : "border-gray-200"
                   } 
                       
                       rounded-full p-[1.2px]`}
                   key={color}
-                    onClick={() =>
-                      handleProductType({ type: "color", value: color })
-                    }
+                  onClick={() =>
+                    handleProductType({ type: "color", value: color })
+                  }
                 >
                   <div
                     className="w-[14px] h-[14px] rounded-full"
@@ -107,17 +118,16 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           </div>
         </div>
 
-
         {/* PRICE AND ADD TO CART BUTTON */}
         <div className="flex items-center justify-between">
           <p className="font-medium">${product.price.toFixed(2)}</p>
           <button
-                      onClick={handleAddToCart}
-                className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer link-hover-amber transition-all duration-300 flex items-center gap-2"
-              >
-                <ShoppingCart className="w-4 h-4" />
-                Add to Cart
-              </button>
+            onClick={handleAddToCart}
+            className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer link-hover-amber transition-all duration-300 flex items-center gap-2"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
