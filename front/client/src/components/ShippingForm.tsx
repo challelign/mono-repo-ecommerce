@@ -9,8 +9,7 @@ const ShippingForm = ({
 }: {
   setShippingForm: (data: ShippingFormInputs) => void;
 }) => {
-
-      const router = useRouter();
+  const router = useRouter();
   const searchParams = useSearchParams();
 
   const activeStep = parseInt(searchParams.get("step") || "2");
@@ -23,10 +22,8 @@ const ShippingForm = ({
     resolver: zodResolver(shippingFormSchema),
   });
 
-
-  const nextStep = () => router.push(`/cart?step=${activeStep - 1}`, { scroll: false });
-
-
+  const nextStep = () =>
+    router.push(`/cart?step=${activeStep - 1}`, { scroll: false });
 
   const handleShippingForm: SubmitHandler<ShippingFormInputs> = (data) => {
     setShippingForm(data);
@@ -113,22 +110,28 @@ const ShippingForm = ({
           <p className="text-xs text-red-500">{errors.city.message}</p>
         )}
       </div>
-      <div className="flex gap-6">
+      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-6">
         <button
           type="button"
           onClick={nextStep}
-          className="w-full bg-gray-600 hover:bg-gray-800 transition-all duration-300 text-white p-2 rounded-lg cursor-pointer flex items-center justify-center gap-2"
+          className="w-full sm:w-1/2 flex items-center justify-center gap-2 px-5 py-3 
+               text-sm font-medium text-white bg-gray-600 
+               hover:bg-gray-700 active:scale-[0.98] 
+               rounded-lg transition-all duration-300 ease-in-out shadow-sm"
         >
+          <ArrowLeft className="w-4 h-4" />
           Back
-          <ArrowLeft className="w-3 h-3" />
         </button>
 
         <button
           type="submit"
-          className="w-full bg-gray-800 hover:bg-gray-900 transition-all duration-300 text-white p-2 rounded-lg cursor-pointer flex items-center justify-center gap-2"
+          className="w-full sm:w-1/2 flex items-center justify-center gap-2 px-5 py-3 
+               text-sm font-medium text-white bg-amber-600 
+               hover:bg-amber-700 active:scale-[0.98] 
+               rounded-lg transition-all duration-300 ease-in-out shadow-md"
         >
           Continue
-          <ArrowRight className="w-3 h-3" />
+          <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     </form>

@@ -7,9 +7,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 const PaymentForm = () => {
   const router = useRouter();
-  
-    const searchParams = useSearchParams();
 
+  const searchParams = useSearchParams();
 
   const activeStep = parseInt(searchParams.get("step") || "3");
 
@@ -21,8 +20,8 @@ const PaymentForm = () => {
     resolver: zodResolver(paymentFormSchema),
   });
 
-
-  const prevStep = () => router.push(`/cart?step=${activeStep - 1}`, { scroll: false });
+  const prevStep = () =>
+    router.push(`/cart?step=${activeStep - 1}`, { scroll: false });
 
   const handlePaymentForm: SubmitHandler<PaymentFormInputs> = (data) => {};
 
@@ -125,22 +124,30 @@ const PaymentForm = () => {
           className="rounded-md"
         />
       </div>
-      <div className="flex gap-6">
+      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-6">
+        {/* Back Button */}
         <button
           type="button"
           onClick={prevStep}
-          className="w-full bg-gray-600 hover:bg-gray-800 transition-all duration-300 text-white p-2 rounded-lg cursor-pointer flex items-center justify-center gap-2"
+          className="w-full sm:w-1/2 flex items-center justify-center gap-2 px-5 py-3 
+               text-sm font-medium text-white bg-gray-600 
+               hover:bg-gray-700 active:scale-[0.98] 
+               rounded-lg transition-all duration-300 ease-in-out shadow-sm"
         >
+          <ArrowLeft className="w-4 h-4" />
           Back
-          <ArrowLeft className="w-3 h-3" />
         </button>
 
+        {/* Checkout Button */}
         <button
           type="submit"
-          className="w-full bg-gray-800 hover:bg-gray-900 transition-all duration-300 text-white p-2 rounded-lg cursor-pointer flex items-center justify-center gap-2"
+          className="w-full sm:w-1/2 flex items-center justify-center gap-2 px-5 py-3 
+               text-sm font-semibold text-white bg-amber-600 
+               hover:bg-amber-700 active:scale-[0.98] 
+               rounded-lg transition-all duration-300 ease-in-out shadow-md hover:shadow-lg hover:shadow-amber-500/20"
         >
           Checkout
-          <ShoppingCart className="w-3 h-3" />
+          <ShoppingCart className="w-4 h-4" />
         </button>
       </div>
     </form>
