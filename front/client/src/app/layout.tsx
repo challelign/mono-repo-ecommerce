@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "TrendCha - Best Clothes",
-  description: "Trendlama is the best place to find the best clothes",
+  description: "Trendl is the best place to find the best clothes",
 };
 
 export default function RootLayout({
