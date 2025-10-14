@@ -1,3 +1,4 @@
+"use client";
 import {
   Home,
   Inbox,
@@ -24,10 +25,9 @@ import {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-
   SidebarSeparator,
 } from "./ui/sidebar";
-import Link from "next/link";
+// import Link from "next/link";
 import Image from "next/image";
 import {
   DropdownMenu,
@@ -40,6 +40,9 @@ import AddOrder from "./AddOrder";
 import AddUser from "./AddUser";
 import AddCategory from "./AddCategory";
 import AddProduct from "./AddProduct";
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 const items = [
   {
@@ -70,6 +73,9 @@ const items = [
 ];
 
 const AppSidebar = () => {
+  // const t = await getTranslations('sideNavgation');
+  const t = useTranslations("sideNavgation");
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="py-4">
@@ -79,6 +85,9 @@ const AppSidebar = () => {
               <Link href="/">
                 <Image src="/logo.svg" alt="logo" width={20} height={20} />
                 <span>Code Rookie</span>
+                <h1>{t("home")}</h1>
+                <h1>{t("inbox")}</h1>
+                <h1>{t("calendar")}</h1>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -95,12 +104,9 @@ const AppSidebar = () => {
                   <SidebarMenuButton asChild>
                     <Link href={item.url}>
                       <item.icon />
-                      <span>{item.title}</span>
+                      <span>{t(item.title.toLowerCase())}</span>
                     </Link>
                   </SidebarMenuButton>
-                  {item.title === "Inbox" && (
-                    <SidebarMenuBadge>24</SidebarMenuBadge>
-                  )}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>

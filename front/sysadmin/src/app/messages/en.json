@@ -1,0 +1,13 @@
+{
+  "home": {
+    "header": "Welcome to the Demo",
+    "subheader": "This is amultilingual website using nextjs"
+  },
+  "sideNavgation": {
+    "home": "Home",
+    "inbox": "Inbox",
+    "calendar": "Calendar",
+    "search": "Search",
+    "settings": "Settings"
+  }
+}

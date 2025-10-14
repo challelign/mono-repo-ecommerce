@@ -1,11 +1,19 @@
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import AppSidebar from "@/components/AppSidebar";
+import "../globals.css"; 
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
+import AppSidebar from "@/components/AppSidebar";
+import { getMessages } from "next-intl/server";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,18 +32,26 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
+  const messages = await getMessages();
 
-  const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
-  
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html  lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
       >
+                <NextIntlClientProvider>
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -50,6 +66,8 @@ export default async function RootLayout({
             </main>
           </SidebarProvider>
         </ThemeProvider>
+                </NextIntlClientProvider>
+
       </body>
     </html>
   );

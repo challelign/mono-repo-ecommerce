@@ -1,0 +1,13 @@
+{
+  "home": {
+    "header": "እንኳን ወደ ሙከራው በደህና መጡ",
+    "subheader": "ይህ በብዙ ቋንቋ የሚነገር ድር ጣቢያ ነው"
+  },
+  "sideNavgation": {
+    "home": "መነሻ ገፅ",
+    "inbox": "መልእክት ሳጥን",
+    "calendar": "የቀን መቁጠሪያ",
+    "search": "ፈልግ",
+    "settings": "ቅንብሮች"
+  }
+}
