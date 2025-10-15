@@ -1,13 +1,31 @@
 {
+  "Common": {
+    "defaultTitle": "የእኔ ድር ጣቢያ",
+    "siteName": "ኮድ ሩኪ",
+    "description": "የኢ-ኮሜርስ መተግበሪያ የአስተዳዳሪ መቆጣጠሪያ ፓነል"
+  },
+  "userTitle": {
+    "siteName": "ኮድ ሩኪ",
+    "description": "የተጠቃሚ አስተዳደር"
+  },
   "home": {
-    "header": "እንኳን ወደ ሙከራው በደህና መጡ",
-    "subheader": "ይህ በብዙ ቋንቋ የሚነገር ድር ጣቢያ ነው"
+    "header": "እንኳን ደህና መጡ",
+    "subheader": "ይህ በብዙ ቋንቋ የሚሰራ ሲስተም ነው"
   },
   "sideNavgation": {
     "home": "መነሻ ገፅ",
     "inbox": "መልእክት ሳጥን",
     "calendar": "የቀን መቁጠሪያ",
     "search": "ፈልግ",
-    "settings": "ቅንብሮች"
+    "settings": "ማስተካከያ"
+  },
+  "products": {
+    "allProducts": "ሁሉንም ምርቶች ይመልከቱ",
+    "addNew": "አዲስ ምርት ይጨምሩ",
+    "addCategory": "አዲስ ምድብ ይጨምሩ"
+  },
+  "users": {
+    "allUsers": "ሁሉንም ተጠቃሚዎች ይመልከቱ",
+    "addNew": "ተጠቃሚ ይጨምሩ"
   }
 }

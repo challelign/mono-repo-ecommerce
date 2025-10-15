@@ -2,6 +2,27 @@ import { getTranslations } from "next-intl/server";
 import { Product, columns } from "./columns";
 import { DataTable } from "./data-table";
 
+// both works fine but only below 14 and under 
+/*
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale, namespace: 'Common' });
+
+  return {
+    title: t('description'),
+  };
+}
+*/
+
+// OR USE This after 14 + and in new next js 14 app directory promise must be awaited not plain object it is promise
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Common' });
+
+  return {
+    title: t('description'),
+  };
+}
+
 const getData = async (): Promise<Product[]> => {
   return [
     {
@@ -116,13 +137,12 @@ const getData = async (): Promise<Product[]> => {
 };
 
 const PaymentsPage = async () => {
- 
-      const t = await getTranslations("sideNavgation");
+  const t = await getTranslations("sideNavgation");
   const data = await getData();
   return (
     <div className="">
       <div className="mb-8 px-4 py-2 bg-secondary rounded-md">
-        <h1 className="font-semibold">All Products {t('home')}</h1>
+        <h1 className="font-semibold">All Products {t("home")}</h1>
       </div>
       <DataTable columns={columns} data={data} />
     </div>

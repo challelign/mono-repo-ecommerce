@@ -75,6 +75,8 @@ const items = [
 const AppSidebar = () => {
   // const t = await getTranslations('sideNavgation');
   const t = useTranslations("sideNavgation");
+  const p = useTranslations("products");
+  const u = useTranslations("users");
 
   return (
     <Sidebar collapsible="icon">
@@ -85,9 +87,9 @@ const AppSidebar = () => {
               <Link href="/">
                 <Image src="/logo.svg" alt="logo" width={20} height={20} />
                 <span>Code Rookie</span>
-                <h1>{t("home")}</h1>
-                <h1>{t("inbox")}</h1>
-                <h1>{t("calendar")}</h1>
+                {/* <h1>{t("home")}</h1> */}
+                {/* <h1>{t("inbox")}</h1> */}
+                {/* <h1>{t("calendar")}</h1> */}
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -123,7 +125,11 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Link href="/products">
                     <Shirt />
-                    See All Products
+                    {/* See All Products allProducts
+
+ */}
+                      {p('allProducts')}
+
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -134,7 +140,8 @@ const AppSidebar = () => {
                       <SidebarMenuButton asChild>
                         <Link href="#">
                           <Plus />
-                          Add Product
+                                                {p('addNew')}
+                          {/* Add Product */}
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
@@ -149,7 +156,9 @@ const AppSidebar = () => {
                       <SidebarMenuButton asChild>
                         <Link href="#">
                           <Plus />
-                          Add Category
+                      {p('addCategory')}
+
+                          {/* Add Category */}
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
@@ -171,7 +180,9 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Link href="/users">
                     <User />
-                    See All Users
+                      {u('allUsers')}
+                  
+                    {/* See All Users */}
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -182,7 +193,9 @@ const AppSidebar = () => {
                       <SidebarMenuButton asChild>
                         <Link href="#">
                           <Plus />
-                          Add User
+                              {p('addNew')}
+
+                          {/* Add User */}
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>

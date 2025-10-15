@@ -35,6 +35,8 @@
 // };
 
 
+/*
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { routing } from '@/i18n/routing';
@@ -65,3 +67,6 @@ export function middleware(req: NextRequest) {
 export const config = {
   matcher: ['/((?!api|_next|.*\\..*).*)'], // matches all pages except API and static
 };
+
+
+*/

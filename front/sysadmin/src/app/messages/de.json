@@ -1,4 +1,13 @@
 {
+  "Common": {
+    "defaultTitle": "Meine Website",
+    "siteName": "Code Rookie",
+    "description": "Admin-Dashboard für E-Commerce-App"
+  },
+  "userTitle": {
+    "siteName": "Code Rookie",
+    "description": "Benutzerverwaltung"
+  },
   "home": {
     "header": "Willkommen zur Demo",
     "subheader": "Dies ist eine mehrsprachige Website mit Next.js"
@@ -9,5 +18,14 @@
     "calendar": "Kalender",
     "search": "Suche",
     "settings": "Einstellungen"
+  },
+  "products": {
+    "allProducts": "Alle Produkte anzeigen",
+    "addNew": "Neues Produkt hinzufügen",
+    "addCategory": "Neue Kategorie hinzufügen"
+  },
+  "users": {
+    "allUsers": "Alle Benutzer anzeigen",
+    "addNew": "Benutzer hinzufügen"
   }
 }

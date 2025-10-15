@@ -1,4 +1,15 @@
 {
+  "Common": {
+    "defaultTitle": "My Website",
+    "siteName": "Code Rookie",
+    "description": "Admin dashboard for E-commerce App"
+  },
+"userTitle": {
+    "siteName": "Code Rookie",
+    "description": "User Management"
+  },
+ 
+
   "home": {
     "header": "Welcome to the Demo",
     "subheader": "This is amultilingual website using nextjs"
@@ -9,5 +20,14 @@
     "calendar": "Calendar",
     "search": "Search",
     "settings": "Settings"
+  },
+  "products": {
+    "allProducts": "See All Products",
+    "addNew": "Add New Product",
+    "addCategory": "Add New Category"
+  },
+  "users": {
+    "allUsers": "See All Users",
+    "addNew": "Add User"
   }
 }
